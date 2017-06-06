@@ -2,7 +2,7 @@ package org.hy.common.hbase.plugins;
 
 import java.util.Map;
 
-import org.hy.common.JavaHelp;
+import org.hy.common.Help;
 import org.hy.common.app.Param;
 import org.hy.common.xml.XJava;
 import org.hy.common.xml.annotation.XType;
@@ -83,7 +83,7 @@ public class HttpContentType
         //          方法2的意思是把你表单的所有信息以流方式提交，页面上的所有信息已经都转换为了文件流，
         //          为的是能让服务端得到你上传的文件的文件流
         
-        if ( JavaHelp.isNull(i_FilePostfix) )
+        if ( Help.isNull(i_FilePostfix) )
         {
             return "application/octet-stream";
         }
@@ -96,7 +96,7 @@ public class HttpContentType
         }
         else
         {
-            return JavaHelp.NVL(v_Param.getValue() ,"application/octet-stream");
+            return Help.NVL(v_Param.getValue() ,"application/octet-stream");
         }
     }
     

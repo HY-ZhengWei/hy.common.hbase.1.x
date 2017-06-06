@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hy.common.ByteHelp;
 import org.hy.common.Date;
-import org.hy.common.JavaHelp;
+import org.hy.common.Help;
 import org.hy.common.StringHelp;
 import org.hy.common.hbase.HBase;
 import org.hy.common.hbase.HData;
@@ -187,7 +187,7 @@ public class HBigFile
                               ,Map<String ,Object> i_ElseDatas)
     {
         List<HData> v_HDatas   = new ArrayList<HData>();
-        String      v_FileType = JavaHelp.NVL(i_FileType ,JavaHelp.NVL(StringHelp.getFilePostfix(i_FileName)).replaceAll("\\." ,"")).toLowerCase();
+        String      v_FileType = Help.NVL(i_FileType ,Help.NVL(StringHelp.getFilePostfix(i_FileName)).replaceAll("\\." ,"")).toLowerCase();
         
         v_HDatas.add(new HData(i_RowKey ,this.bigFileInfo.getColumn_ID()          ,i_RowKey)                        .setFamilyName(this.bigFileInfo.getFamilyName()));
         v_HDatas.add(new HData(i_RowKey ,this.bigFileInfo.getColumn_FileName()    ,i_FileName)                      .setFamilyName(this.bigFileInfo.getFamilyName()));
@@ -418,7 +418,7 @@ public class HBigFile
         
         try
         {
-            return this.write(JavaHelp.NVL(i_FileName ,i_File.getName()) 
+            return this.write(Help.NVL(i_FileName ,i_File.getName()) 
                              ,new FileInputStream(i_File)
                              ,i_FileType
                              ,i_ElseDatas);
@@ -522,7 +522,7 @@ public class HBigFile
      */
     public String write(String i_FileName ,InputStream i_SourceInput ,String i_FileType ,Map<String ,Object> i_ElseDatas) throws IOException
     {
-        if ( JavaHelp.isNull(i_FileName) )
+        if ( Help.isNull(i_FileName) )
         {
             throw new NullPointerException("FileName is null.");
         }
@@ -684,7 +684,7 @@ public class HBigFile
                             ,String  i_SaveFileName 
                             ,boolean i_IsOver) throws IOException
     {
-        if ( JavaHelp.isNull(i_SavePath) )
+        if ( Help.isNull(i_SavePath) )
         {
             throw new NullPointerException("SavePath is null.");
         }
@@ -695,13 +695,13 @@ public class HBigFile
             throw new VerifyError("SavePath is not Directory.");
         }
         
-        if ( JavaHelp.isNull(i_SaveFileName) )
+        if ( Help.isNull(i_SaveFileName) )
         {
             return this.readToFile(i_RowKey ,v_SavePath ,i_IsOver);
         }
         else
         {
-            File v_SaveFile = new File(v_SavePath.getAbsolutePath() + JavaHelp.getSysPathSeparator() + i_SaveFileName.trim());
+            File v_SaveFile = new File(v_SavePath.getAbsolutePath() + Help.getSysPathSeparator() + i_SaveFileName.trim());
             return this.readToFile(i_RowKey ,v_SaveFile ,i_IsOver);
         }
     }
@@ -738,7 +738,7 @@ public class HBigFile
         File v_SaveFile = null;
         if ( i_SaveFile.isDirectory() )
         {
-            v_SaveFile = new File(i_SaveFile.getAbsolutePath() + JavaHelp.getSysPathSeparator() + v_HBFile.getFileName());
+            v_SaveFile = new File(i_SaveFile.getAbsolutePath() + Help.getSysPathSeparator() + v_HBFile.getFileName());
         }
         else
         {
