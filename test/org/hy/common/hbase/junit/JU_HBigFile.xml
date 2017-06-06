@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+	<import name="sqls"            class="java.util.ArrayList" />
+	<import name="hbase"           class="org.hy.common.hbase.HBase" />
+	<import name="hBigFile"        class="org.hy.common.hbase.plugins.HBigFile" />
+	<import name="bigFileInfo"     class="org.hy.common.hbase.plugins.BigFileInfoDef" />
+	<import name="bigFileData"     class="org.hy.common.hbase.plugins.BigFileDataDef" />
+
+
+
+	<!-- 数据库配置信息 -->
+	<sqls>
+
+		<hbase id="HBase">
+			<constructor>
+				<String>192.168.105.107</String>
+			</constructor>
+			
+			<!-- call name="setResultType_HData" / -->
+		</hbase>
+		
+		
+		<bigFileInfo id="BFileInfo">
+		</bigFileInfo>
+		
+		
+		<bigFileData id="BFileData">
+			<familyBlockSize>64</familyBlockSize> <!-- 512KB -->
+		</bigFileData>
+		
+		
+		<hBigFile id="HBigFile">
+			<constructor>
+				<HBase       ref="HBase" />
+				<bigFileInfo ref="BFileInfo" />
+				<BigFileData ref="BFileData" />
+			</constructor>
+		</hBigFile>
+		
+	</sqls>
+	
+</config>
