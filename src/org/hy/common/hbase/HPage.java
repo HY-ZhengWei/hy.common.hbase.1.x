@@ -2,7 +2,7 @@ package org.hy.common.hbase;
 
 import org.apache.hadoop.hbase.util.Bytes;
 
-import org.hy.common.JavaHelp;
+import org.hy.common.Help;
 import org.hy.common.ListMap;
 
 
@@ -161,7 +161,7 @@ public class HPage
     
     public void setRowKey(String i_RowKey)
     {
-        if ( !JavaHelp.isNull(i_RowKey) )
+        if ( !Help.isNull(i_RowKey) )
         {
             this.setRowKey(Bytes.toBytes(i_RowKey));
         }

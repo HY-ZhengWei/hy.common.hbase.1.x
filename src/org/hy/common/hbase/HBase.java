@@ -40,7 +40,6 @@ import org.apache.hadoop.hbase.filter.ValueFilter;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.hy.common.CounterMap;
 import org.hy.common.Help;
-import org.hy.common.JavaHelp;
 import org.hy.common.Return;
 
 
@@ -121,7 +120,7 @@ public class HBase implements Cloneable
 	{
 	    this(i_IP);
 	    
-	    if ( !JavaHelp.isNull(i_Configs) )
+	    if ( !Help.isNull(i_Configs) )
 	    {
 	        Iterator<String> v_Keys = i_Configs.keySet().iterator();
 	        
@@ -320,7 +319,7 @@ public class HBase implements Cloneable
     {
         HTable v_Table = null;
         
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Table name is null.");
         }
@@ -427,7 +426,7 @@ public class HBase implements Cloneable
         Collection<HColumnDescriptor> v_HColumns = this.getTableFamilys(i_TableName);
         List<String>                  v_Ret      = new ArrayList<String>();
         
-        if ( JavaHelp.isNull(v_HColumns) )
+        if ( Help.isNull(v_HColumns) )
         {
             for (HColumnDescriptor v_HColumn : v_HColumns)
             {
@@ -618,7 +617,7 @@ public class HBase implements Cloneable
      */
     private void core_createTable(String i_TableName ,String [] i_FamilyNames)
     {
-        if ( JavaHelp.isNull(i_FamilyNames) )
+        if ( Help.isNull(i_FamilyNames) )
         {
             throw new NullPointerException("Create table[" + i_TableName + "] FamilyNames is null.");
         }
@@ -627,7 +626,7 @@ public class HBase implements Cloneable
         
         for (int i=0; i<i_FamilyNames.length; i++)
         {
-            if ( i_FamilyNames[i] == null || JavaHelp.isNull(i_FamilyNames[i]) )
+            if ( i_FamilyNames[i] == null || Help.isNull(i_FamilyNames[i]) )
             {
                 throw new NullPointerException("Create table[" + i_TableName + "] FamilyNames[" + i +"] is null.");
             }
@@ -658,12 +657,12 @@ public class HBase implements Cloneable
      */
     private void core_createTable(String i_TableName ,HColumnDescriptor [] i_Familys)
     {
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Create table name is null.");
         }
         
-        if ( JavaHelp.isNull(i_Familys) )
+        if ( Help.isNull(i_Familys) )
         {
             throw new NullPointerException("Create table[" + i_TableName + "] FamilyNames is null.");
         }
@@ -673,7 +672,7 @@ public class HBase implements Cloneable
         
         for (int i=0; i<i_Familys.length; i++)
         {
-            if ( i_Familys[i] == null || JavaHelp.isNull(i_Familys[i].getNameAsString()) )
+            if ( i_Familys[i] == null || Help.isNull(i_Familys[i].getNameAsString()) )
             {
                 throw new NullPointerException("Create table[" + i_TableName + "] FamilyNames[" + i +"] is null.");
             }
@@ -701,7 +700,7 @@ public class HBase implements Cloneable
      */
     public void addFamily(String i_TableName ,String i_FamilyName)
     {
-        if ( JavaHelp.isNull(i_FamilyName) )
+        if ( Help.isNull(i_FamilyName) )
         {
             throw new NullPointerException("Add fmaily name is null.");
         }
@@ -733,7 +732,7 @@ public class HBase implements Cloneable
      */
     public void dropFamily(String i_TableName ,String i_FamilyName)
     {
-        if ( JavaHelp.isNull(i_FamilyName) )
+        if ( Help.isNull(i_FamilyName) )
         {
             throw new NullPointerException("Drop fmaily name is null.");
         }
@@ -791,7 +790,7 @@ public class HBase implements Cloneable
         Map<String ,Map<String ,Object>> v_Ret       = this.getRows(i_TableName ,new HPage(i_ScanCount));
         CounterMap<String>               v_Structure = new CounterMap<String>();
         
-        if ( !JavaHelp.isNull(v_Ret) )
+        if ( !Help.isNull(v_Ret) )
         {
             for (String v_RowKey : v_Ret.keySet())
             {
@@ -946,7 +945,7 @@ public class HBase implements Cloneable
      */
     public void put(String i_TableName ,String i_RowKey ,String i_FamilyName ,Map<String ,Object> i_Columns)
     {
-        if ( JavaHelp.isNull(i_Columns) )
+        if ( Help.isNull(i_Columns) )
         {
             throw new NullPointerException("Call method[put] Columns is null.");
         }
@@ -1005,7 +1004,7 @@ public class HBase implements Cloneable
      */
     public void put(String i_TableName ,List<HData> i_HDatas)
     {
-        if ( JavaHelp.isNull(i_HDatas) )
+        if ( Help.isNull(i_HDatas) )
         {
             throw new NullPointerException("Call method[put] HDatas is null.");
         }
@@ -1025,7 +1024,7 @@ public class HBase implements Cloneable
      */
 	private void core_Put(String i_TableName ,HData [] i_HDatas)
 	{
-	    if ( JavaHelp.isNull(i_TableName) )
+	    if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[put] TableName is null.");
         }
@@ -1048,17 +1047,17 @@ public class HBase implements Cloneable
                 throw new NullPointerException("Call method[put] HDatas[" + i + "] is null.");
             }
             
-            if ( JavaHelp.isNull(v_HData.getRowKey()) )
+            if ( Help.isNull(v_HData.getRowKey()) )
             {
                 throw new NullPointerException("Call method[put] HDatas[" + i + "].getRowKey() is null.");
             }
             
-            if ( JavaHelp.isNull(v_HData.getFamilyName()) )
+            if ( Help.isNull(v_HData.getFamilyName()) )
             {
                 throw new NullPointerException("Call method[put] HDatas[" + i + "].getFamilyName() is null.");
             }
             
-            if ( JavaHelp.isNull(v_HData.getColumnName()) )
+            if ( Help.isNull(v_HData.getColumnName()) )
             {
                 throw new NullPointerException("Call method[put] HDatas[" + i + "].getColumnName() is null.");
             }
@@ -1127,7 +1126,7 @@ public class HBase implements Cloneable
 	 */
 	public Map<String ,Object> getRow(String i_TableName ,HData i_HData)
 	{
-	    if ( JavaHelp.isNull(i_TableName) )
+	    if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[getRow] TableName is null.");
         }
@@ -1137,7 +1136,7 @@ public class HBase implements Cloneable
             throw new NullPointerException("Call method[getRow] HData is null.");
         }
 	    
-	    if ( JavaHelp.isNull(i_HData.getRowKey()) )
+	    if ( Help.isNull(i_HData.getRowKey()) )
 	    {
 	        throw new NullPointerException("Call method[getRow] HData.getRowKey() is null.");
 	    }
@@ -1237,7 +1236,7 @@ public class HBase implements Cloneable
      */
     private Object core_getValue(String i_TableName ,HData i_HData)
     {
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[getValue] TableName is null.");
         }
@@ -1247,17 +1246,17 @@ public class HBase implements Cloneable
             throw new NullPointerException("Call method[getValue] HData is null.");
         }
         
-        if ( JavaHelp.isNull(i_HData.getRowKey()) )
+        if ( Help.isNull(i_HData.getRowKey()) )
         {
             throw new NullPointerException("Call method[getValue] HData.getRowKey is null.");
         }
         
-        if ( JavaHelp.isNull(i_HData.getFamilyName()) )
+        if ( Help.isNull(i_HData.getFamilyName()) )
         {
             throw new NullPointerException("Call method[getValue] HData.getFamilyName is null.");
         }
         
-        if ( JavaHelp.isNull(i_HData.getColumnName()) )
+        if ( Help.isNull(i_HData.getColumnName()) )
         {
             throw new NullPointerException("Call method[getValue] HData.getColumnName is null.");
         }
@@ -1332,12 +1331,12 @@ public class HBase implements Cloneable
      */
     public Map<String ,Map<String ,Object>> getRowsByKeys(String i_TableName ,List<String> i_RowKeys ,List<HData> i_ShowFilters)
     {
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[getRowsByKey] TableName is null.");
         }
         
-        if ( JavaHelp.isNull(i_RowKeys) )
+        if ( Help.isNull(i_RowKeys) )
         {
             throw new NullPointerException("Call method[getRowsByKey] RowKeys is null.");
         }
@@ -1345,7 +1344,7 @@ public class HBase implements Cloneable
         
         for (int i=0; i<i_RowKeys.size(); i++)
         {
-            if ( JavaHelp.isNull(i_RowKeys.get(i)) )
+            if ( Help.isNull(i_RowKeys.get(i)) )
             {
                 throw new NullPointerException("Call method[getRowsByKey] RowKeys.get(" + i + ") is null.");
             }
@@ -1354,15 +1353,15 @@ public class HBase implements Cloneable
         
         List<HData> v_HDatas = new ArrayList<HData>();
         
-        if ( !JavaHelp.isNull(i_ShowFilters) )
+        if ( !Help.isNull(i_ShowFilters) )
         {
             for (HData v_HData : i_ShowFilters)
             {
                 if ( v_HData.getValue() == null )
                 {
-                    if ( JavaHelp.isNull(v_HData.getRowKey()) )
+                    if ( Help.isNull(v_HData.getRowKey()) )
                     {
-                        if ( !JavaHelp.isNull(v_HData.getFamilyName()) )
+                        if ( !Help.isNull(v_HData.getFamilyName()) )
                         {
                             v_HDatas.add(v_HData);
                         }
@@ -1385,7 +1384,7 @@ public class HBase implements Cloneable
      */
 	public Map<String ,Map<String ,Object>> getRows(String i_TableName ,Map<String ,Object> i_Conditions)
 	{
-        if ( !JavaHelp.isNull(i_Conditions) )
+        if ( !Help.isNull(i_Conditions) )
         {
             List<HData> v_HDatas = new ArrayList<HData>();
             
@@ -1413,7 +1412,7 @@ public class HBase implements Cloneable
      */
     public List<String> getRowsOnlyKey(String i_TableName ,Map<String ,Object> i_Conditions)
     {
-        if ( !JavaHelp.isNull(i_Conditions) )
+        if ( !Help.isNull(i_Conditions) )
         {
             List<HData> v_HDatas = new ArrayList<HData>();
             
@@ -1443,7 +1442,7 @@ public class HBase implements Cloneable
      */
     public Map<String ,Map<String ,Object>> getRows(String i_TableName ,HPage io_HPage ,Map<String ,Object> i_Conditions)
     {
-        if ( !JavaHelp.isNull(i_Conditions) )
+        if ( !Help.isNull(i_Conditions) )
         {
             List<HData> v_HDatas = new ArrayList<HData>();
             
@@ -1526,7 +1525,7 @@ public class HBase implements Cloneable
      */ 
     public Map<String ,Map<String ,Object>> getRows(String i_TableName ,List<HData> i_HDatas)
     {
-        if ( JavaHelp.isNull(i_HDatas) )
+        if ( Help.isNull(i_HDatas) )
         {
             return this.core_getRows(i_TableName ,null ,null);
         }
@@ -1560,7 +1559,7 @@ public class HBase implements Cloneable
      */ 
     public List<String> getRowsOnlyKey(String i_TableName ,List<HData> i_HDatas)
     {
-        if ( JavaHelp.isNull(i_HDatas) )
+        if ( Help.isNull(i_HDatas) )
         {
             return this.core_getRowsOnlyKey(i_TableName ,null ,null);
         }
@@ -1598,7 +1597,7 @@ public class HBase implements Cloneable
      */ 
     public Map<String ,Map<String ,Object>> getRows(String i_TableName ,HPage i_HPage ,List<HData> i_HDatas)
     {
-        if ( JavaHelp.isNull(i_HDatas) )
+        if ( Help.isNull(i_HDatas) )
         {
             return this.core_getRows(i_TableName ,i_HPage ,null);
         }
@@ -1726,7 +1725,7 @@ public class HBase implements Cloneable
     @SuppressWarnings("unused")
     private Map<String ,Map<String ,Object>> core_getRows(String i_TableName ,HPage io_HPage ,HData [] i_HDatas)
     {
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[getRows] TableName is null.");
         }
@@ -1814,7 +1813,7 @@ public class HBase implements Cloneable
             
             if ( v_RPFilter.booleanValue() )
             {
-                if ( !JavaHelp.isNull(v_RowKeys) )
+                if ( !Help.isNull(v_RowKeys) )
                 {
                     v_Ret = this.core_getRowsByKeys(i_TableName ,v_RowKeys ,v_ShowFilters);
                     
@@ -1914,7 +1913,7 @@ public class HBase implements Cloneable
                 else
                 {
                     // 对查询结果显示字段的过滤。
-                    if ( !JavaHelp.isNull(v_ShowFilters) )
+                    if ( !Help.isNull(v_ShowFilters) )
                     {
                         FilterList v_TempFilters = (FilterList)v_Scan.getFilter();
                         
@@ -2046,7 +2045,7 @@ public class HBase implements Cloneable
     @SuppressWarnings("unused")
     private List<String> core_getRowsOnlyKey(String i_TableName ,HPage io_HPage ,HData [] i_HDatas)
     {
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[getRows] TableName is null.");
         }
@@ -2134,7 +2133,7 @@ public class HBase implements Cloneable
             
             if ( v_RPFilter.booleanValue()  )
             {
-                if ( !JavaHelp.isNull(v_RowKeys) )
+                if ( !Help.isNull(v_RowKeys) )
                 {
                     v_Ret      = v_RowKeys;
                     v_ForCount = v_RowKeys.size();
@@ -2307,7 +2306,7 @@ public class HBase implements Cloneable
                     v_IsOR = true;
                 }
                 
-                if ( !JavaHelp.isNull(v_HData.getRowKey()) )
+                if ( !Help.isNull(v_HData.getRowKey()) )
                 {
                     v_Filter = new RowFilter(v_HData.getCompareOp() ,new BinaryComparator(Bytes.toBytes(v_HData.getRowKey())));
                     
@@ -2320,9 +2319,9 @@ public class HBase implements Cloneable
                 {
                     v_Return.set(false);
                     
-                    if ( JavaHelp.isNull(v_HData.getColumnName()) )
+                    if ( Help.isNull(v_HData.getColumnName()) )
                     {
-                        if ( !JavaHelp.isNull(v_HData.getFamilyName()) )
+                        if ( !Help.isNull(v_HData.getFamilyName()) )
                         {
                             if ( v_HData.getValue() != null )
                             {
@@ -2366,7 +2365,7 @@ public class HBase implements Cloneable
                             v_Return.paramInt++;
                         }
                     }
-                    else if ( !JavaHelp.isNull(v_HData.getFamilyName()) )
+                    else if ( !Help.isNull(v_HData.getFamilyName()) )
                     {
                         if ( v_HData.getValue() != null )
                         {
@@ -2398,7 +2397,7 @@ public class HBase implements Cloneable
                             v_Filter = null;
                         }
                     }
-                    else if ( !JavaHelp.isNull(v_HData.getColumnName()) )
+                    else if ( !Help.isNull(v_HData.getColumnName()) )
                     {
                         Filter v_QFilter = new QualifierFilter(v_HData.getCompareOp() ,new BinaryComparator(Bytes.toBytes(v_HData.getColumnName())));
                         
@@ -2459,7 +2458,7 @@ public class HBase implements Cloneable
      */
     public long getCount(String i_TableName ,Map<String ,Object> i_Conditions)
     {
-        if ( !JavaHelp.isNull(i_Conditions) )
+        if ( !Help.isNull(i_Conditions) )
         {
             List<HData> v_HDatas = new ArrayList<HData>();
             
@@ -2511,7 +2510,7 @@ public class HBase implements Cloneable
      */
     public long getCount(String i_TableName ,List<HData> i_HDatas)
     {
-        if ( JavaHelp.isNull(i_HDatas) )
+        if ( Help.isNull(i_HDatas) )
         {
             return this.core_getCount(i_TableName ,new HPage(this.countPageSize) ,null);
         }
@@ -2572,7 +2571,7 @@ public class HBase implements Cloneable
      */
     private long core_getCount(String i_TableName ,HPage i_HPage ,HData [] i_HDatas)
     {
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[getCount] TableName is null.");
         }
@@ -2622,7 +2621,7 @@ public class HBase implements Cloneable
             
             if ( v_RPFilter.booleanValue() )
             {
-                if ( !JavaHelp.isNull(v_RowKeys) )
+                if ( !Help.isNull(v_RowKeys) )
                 {
                     v_RCount = v_RowKeys.size();
                     v_RowKey = Bytes.toBytes(v_RowKeys.get(v_RowKeys.size() - 1));
@@ -2709,7 +2708,7 @@ public class HBase implements Cloneable
                 else
                 {
                     // 对查询结果显示字段的过滤。
-                    if ( !JavaHelp.isNull(v_ShowFilters) )
+                    if ( !Help.isNull(v_ShowFilters) )
                     {
                         FilterList v_TempFilters = (FilterList)v_Scan.getFilter();
                         
@@ -2800,9 +2799,9 @@ public class HBase implements Cloneable
             
             for (HData v_HData : i_ShowFilters)
             {
-                if ( !JavaHelp.isNull(v_HData.getFamilyName()) )
+                if ( !Help.isNull(v_HData.getFamilyName()) )
                 {
-                    if ( !JavaHelp.isNull(v_HData.getColumnName()) )
+                    if ( !Help.isNull(v_HData.getColumnName()) )
                     {
                         v_Get.addColumn(Bytes.toBytes(v_HData.getFamilyName()) ,Bytes.toBytes(v_HData.getColumnName()));
                     }
@@ -2921,7 +2920,7 @@ public class HBase implements Cloneable
      */
     public void delete(String i_TableName ,String i_RowKey ,String i_FamilyName ,List<String> i_ColumnNames)
     {
-        if ( JavaHelp.isNull(i_ColumnNames) )
+        if ( Help.isNull(i_ColumnNames) )
         {
             throw new NullPointerException("Call method[delete] ColumnNames is null.");
         }
@@ -2932,7 +2931,7 @@ public class HBase implements Cloneable
         {
             String v_ColumnName = i_ColumnNames.get(i);
             
-            if ( JavaHelp.isNull(v_ColumnName) )
+            if ( Help.isNull(v_ColumnName) )
             {
                 throw new NullPointerException("Call method[delete] ColumnNames.get(" + i +") is null.");
             }
@@ -3000,7 +2999,7 @@ public class HBase implements Cloneable
         
         for (int i=0; i<i_RowKeys.size(); i++)
         {
-            if ( i_RowKeys.get(i) == null || JavaHelp.isNull(i_RowKeys.get(i).toString()) )
+            if ( i_RowKeys.get(i) == null || Help.isNull(i_RowKeys.get(i).toString()) )
             {
                 throw new NullPointerException("Call method[deleteByKeys] RowKeys.get(" + i + ") is null");
             }
@@ -3030,7 +3029,7 @@ public class HBase implements Cloneable
      */
     private void core_Delete(String i_TableName ,HData [] i_HDatas)
     {
-        if ( JavaHelp.isNull(i_TableName) )
+        if ( Help.isNull(i_TableName) )
         {
             throw new NullPointerException("Call method[delete] TableName is null.");
         }
@@ -3049,16 +3048,16 @@ public class HBase implements Cloneable
         {
             HData v_HData = i_HDatas[i];
             
-            if ( JavaHelp.isNull(v_HData.getRowKey()) )
+            if ( Help.isNull(v_HData.getRowKey()) )
             {
                 throw new NullPointerException("Call method[delete] HDatas[" + i + "].getRowKey() is null");
             }
             
             Delete v_Delete = new Delete(Bytes.toBytes(v_HData.getRowKey()));
             
-            if ( !JavaHelp.isNull(v_HData.getColumnName()) )
+            if ( !Help.isNull(v_HData.getColumnName()) )
             {
-                if ( !JavaHelp.isNull(v_HData.getFamilyName()) )
+                if ( !Help.isNull(v_HData.getFamilyName()) )
                 {
                     v_Delete.deleteColumn(Bytes.toBytes(v_HData.getFamilyName()) ,Bytes.toBytes(v_HData.getColumnName()));
                 }
@@ -3067,7 +3066,7 @@ public class HBase implements Cloneable
                     throw new NullPointerException("Call method[delete] HDatas[" + i +"].getFamilyName() is null");
                 }
             }
-            else if ( !JavaHelp.isNull(v_HData.getFamilyName()) )
+            else if ( !Help.isNull(v_HData.getFamilyName()) )
             {
                 v_Delete.deleteFamily(Bytes.toBytes(v_HData.getFamilyName()));
             }
