@@ -426,7 +426,7 @@ public class HBase implements Cloneable
         Collection<HColumnDescriptor> v_HColumns = this.getTableFamilys(i_TableName);
         List<String>                  v_Ret      = new ArrayList<String>();
         
-        if ( Help.isNull(v_HColumns) )
+        if ( !Help.isNull(v_HColumns) )
         {
             for (HColumnDescriptor v_HColumn : v_HColumns)
             {
