@@ -1,5 +1,5 @@
 Manifest-Version: 1.6.1
 Created-By: HY.ZhengWei@qq.com  2014-05
-Specification-Version: 1.6.1  2017-12-29
+Specification-Version: 1.6.1  2018-03-07
 SourceCode: https://github.com/HY-ZhengWei/hy.common.hbase.1.x
 Build-JDK: 1.6
