@@ -19,7 +19,7 @@
 	<classpathentry kind="lib" path="lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.9.jar"/>
 	<classpathentry kind="lib" path="lib/commons-collections-3.2.2.jar"/>
-	<classpathentry kind="lib" path="lib/commons-compress-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-compress-1.4.1.jar" sourcepath="C:/Users/ZhengWei/.m2/org/apache/commons/commons-compress/1.4.1/commons-compress-1.4.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-configuration-1.6.jar"/>
 	<classpathentry kind="lib" path="lib/commons-daemon-1.0.13.jar"/>
 	<classpathentry kind="lib" path="lib/commons-digester-1.8.jar"/>

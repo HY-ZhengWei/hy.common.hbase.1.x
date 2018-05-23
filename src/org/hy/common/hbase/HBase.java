@@ -51,6 +51,7 @@ import org.hy.common.Return;
  * 
  * @author ZhengWei(HY)
  * @create 2014-05-16
+ *         2018-05-23  添加  表失效方法disableTable()
  */
 public class HBase implements Cloneable
 {
@@ -489,6 +490,36 @@ public class HBase implements Cloneable
         }
         
         return null;
+    }
+    
+    
+    
+    /**
+     * 表失效
+     * 
+     * @author      ZhengWei(HY)
+     * @createDate  2018-05-23
+     * @version     v1.0
+     *
+     * @param i_TableName
+     */
+    public void disableTable(String i_TableName)
+    {
+        if ( this.isExistsTable(i_TableName) )
+        {
+            try
+            {
+                this.getHBaseAdmin().disableTable(i_TableName.trim());
+            }
+            catch (Exception exce)
+            {
+                exce.printStackTrace();
+            }
+        }
+        else
+        {
+            throw new NullPointerException("Disable table[" + i_TableName + "] is not exists.");
+        }
     }
     
     
