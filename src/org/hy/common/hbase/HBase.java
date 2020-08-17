@@ -2453,7 +2453,7 @@ public class HBase implements Cloneable
                         else
                         {
                             // 对查询返回字段的过滤信息时，列族名必须存在才行
-                            throw new VerifyError("Call method[getRows] HDatas[" + i +"] new ShowFilter is error, FamilyName must have.");
+                            throw new RuntimeException("Call method[getRows] HDatas[" + i +"] new ShowFilter is error, FamilyName must have.");
                         }
                     }
                     else

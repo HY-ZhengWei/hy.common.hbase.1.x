@@ -32,7 +32,7 @@ public class HPage
     {
         if ( i_PageSize < 1 )
         {
-            throw new java.lang.InstantiationError("PageSize(" + i_PageSize + ") is not >= 1.");
+            throw new IndexOutOfBoundsException("PageSize(" + i_PageSize + ") is not >= 1.");
         }
         
         this.pageSize    = i_PageSize;

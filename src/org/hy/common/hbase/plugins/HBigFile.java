@@ -64,17 +64,17 @@ public class HBigFile
     {
         if ( i_HBase == null )
         {
-            throw new VerifyError("HBase is null.");
+            throw new NullPointerException("HBase is null.");
         }
         
         if ( i_BFInfo == null )
         {
-            throw new VerifyError("BigFileInfo is null.");
+            throw new NullPointerException("BigFileInfo is null.");
         }
         
         if ( i_BFData == null )
         {
-            throw new VerifyError("BigFileData is null.");
+            throw new NullPointerException("BigFileData is null.");
         }
         
         this.hbase         = i_HBase;
@@ -407,12 +407,12 @@ public class HBigFile
         
         if ( !i_File.isFile() )
         {
-            throw new VerifyError("File object[" + i_File.getAbsolutePath() + "] is not file.");
+            throw new RuntimeException("File object[" + i_File.getAbsolutePath() + "] is not file.");
         }
         
         if ( !i_File.canRead() )
         {
-            throw new VerifyError("File[" + i_File.getAbsolutePath() + "] can not read.");
+            throw new RuntimeException("File[" + i_File.getAbsolutePath() + "] can not read.");
         }
         
         
@@ -692,7 +692,7 @@ public class HBigFile
         File v_SavePath = new File(i_SavePath.trim());
         if ( !v_SavePath.isDirectory() )
         {
-            throw new VerifyError("SavePath is not Directory.");
+            throw new RuntimeException("SavePath is not Directory.");
         }
         
         if ( Help.isNull(i_SaveFileName) )
@@ -753,7 +753,7 @@ public class HBigFile
             }
             else
             {
-                throw new VerifyError("SaveFile[" + v_SaveFile.getAbsolutePath() + "] is exists.");
+                throw new RuntimeException("SaveFile[" + v_SaveFile.getAbsolutePath() + "] is exists.");
             }
         }
         
