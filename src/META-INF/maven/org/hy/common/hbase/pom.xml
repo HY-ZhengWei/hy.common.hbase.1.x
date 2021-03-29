@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>hy.common.hbase</name>
-  <url>https://github.com/HY-ZhengWei/hy.common.hbase.1.x</url>
+  <url>https://github.com/HY-ZhengWei/hy.common.hbase.1.x</url>   <!-- https://gitee.com/HY-ZhengWei/hy.common.hbase.1.x -->
   
   <developers>
     <developer>
@@ -31,18 +31,19 @@
       <scope>test</scope>
     </dependency>
     
-	<!-- https://github.com/HY-ZhengWei/XJava -->
-	<dependency>
-	    <groupId>org</groupId>
-	    <artifactId>hy.common.xjava</artifactId>
-	    <version>4.0.8</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.hbase</groupId>
-	    <artifactId>hbase-client</artifactId>
-	    <version>1.2.5</version>
-	</dependency>
-	
+    <!-- https://github.com/HY-ZhengWei/XJava -->
+    <!-- https://gitee.com/HY-ZhengWei/XJava -->
+    <dependency>
+        <groupId>org</groupId>
+        <artifactId>hy.common.xjava</artifactId>
+        <version>4.1.1</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-client</artifactId>
+        <version>1.2.5</version>
+    </dependency>
+    
   </dependencies>
 </project>
